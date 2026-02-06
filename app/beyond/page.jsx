@@ -96,7 +96,7 @@ export default function BeyondPage() {
                 }`}
               >
                 {unlocked ? <Unlock className="h-4 w-4" /> : <Lock className="h-4 w-4" />}
-                {unlocked ? "Quest Map Unlocked" : "Locked: Finish Levels 1-3"}
+                {unlocked ? "Quest Map Unlocked" : "Locked: Finish Levels 1-5"}
               </span>
               <Link
                 href="/sources"
@@ -179,7 +179,7 @@ export default function BeyondPage() {
           </div>
           {!unlocked && (
             <div className="mt-4 rounded-2xl border border-sand-2 bg-sand/60 p-4 text-sm text-ink-soft">
-              Finish all Level 1-3 lessons to unlock the full quest map.
+              Finish all Level 1-5 lessons to unlock the full quest map.
             </div>
           )}
         </div>
@@ -266,7 +266,7 @@ export default function BeyondPage() {
           <Trophy className="h-5 w-5 text-sunrise" /> Bonus Vault
         </div>
         <p className="mt-2 text-sm text-ink-soft">
-          Advanced builds for when Antoine wants a bigger challenge (adult supervision required).
+          Advanced builds for when the team wants a bigger challenge (adult supervision required).
         </p>
         <div className={`mt-4 grid gap-6 md:grid-cols-2 ${unlocked ? "" : "blur-sm"}`}>
           {BEYOND.bonus.map((project) => (
@@ -312,7 +312,7 @@ export default function BeyondPage() {
 
       {!unlocked && (
         <section className="mt-6 rounded-2xl border border-sand-2 bg-sand/60 p-4 text-sm text-ink-soft">
-          Locked for now. Finish all Level 1-3 lessons to unlock the full quest map.
+          Locked for now. Finish all Level 1-5 lessons to unlock the full quest map.
         </section>
       )}
     </main>

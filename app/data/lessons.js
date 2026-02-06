@@ -293,19 +293,25 @@ export const LESSONS = [
       {
         title: "Engineering design is a process",
         text:
-          "The engineering design process is a series of steps engineers use to solve problems.",
+          "Engineers follow a clear set of steps to solve problems.",
+        example:
+          "Example: Build a paper tower, test it, then improve the base.",
         sources: ["te_design"],
       },
       {
         title: "A common set of steps",
         text:
           "A common version is: Ask, Research, Imagine, Plan, Create, Test, Improve.",
+        example:
+          "Example: Ask what the tower must do, plan it, build it, then test it.",
         sources: ["te_design_steps"],
       },
       {
         title: "Testing leads to improvement",
         text:
-          "After testing, engineers evaluate what worked and improve the design.",
+          "Testing shows what worked so the design can be improved.",
+        example:
+          "Example: If the tower falls, change one thing and test again.",
         sources: ["te_design"],
       },
     ],
@@ -375,24 +381,29 @@ export const LESSONS = [
       {
         title: "Force is a push or pull",
         text: "A force is a push or pull on an object.",
+        example: "Example: Pushing a swing or pulling a door open.",
         sources: ["nasa_force"],
       },
       {
         title: "First law",
         text:
-          "Objects keep doing what they are doing unless a net external force acts on them.",
+          "Things keep moving or staying still unless a net force changes that.",
+        example: "Example: A soccer ball keeps rolling until friction slows it.",
         sources: ["brit_newton"],
       },
       {
         title: "Second law",
         text:
-          "Acceleration is proportional to net force and inversely proportional to mass (F = m × a).",
+          "More force gives more acceleration; more mass gives less (F = m × a).",
+        example:
+          "Example: A light skateboard speeds up more than a heavy cart with the same push.",
         sources: ["brit_newton"],
       },
       {
         title: "Third law",
         text:
-          "For every action force, there is an equal and opposite reaction force.",
+          "For every push, there is an equal push back in the opposite direction.",
+        example: "Example: When you jump, the ground pushes you upward.",
         sources: ["brit_newton"],
       },
     ],
@@ -462,17 +473,20 @@ export const LESSONS = [
         title: "Mass stays the same",
         text:
           "Mass is the amount of matter in an object and does not change with location.",
+        example: "Example: Your mass is the same on Earth and on the Moon.",
         sources: ["brit_mass_weight"],
       },
       {
         title: "Weight is a force",
         text: "Weight is the force of gravity pulling on an object.",
+        example: "Example: A bathroom scale measures your weight.",
         sources: ["brit_mass_weight", "nasa_weight"],
       },
       {
         title: "Gravity changes weight",
         text:
           "Weight changes if gravity changes, but mass stays the same.",
+        example: "Example: You would weigh less on the Moon.",
         sources: ["brit_mass_weight"],
       },
     ],
@@ -534,19 +548,22 @@ export const LESSONS = [
       {
         title: "Work",
         text:
-          "Work is done when a force moves an object through a distance; work equals force times distance.",
+          "Work happens when a force moves an object through a distance.",
+        example: "Example: Lifting a backpack onto a desk does work.",
         sources: ["nasa_work"],
       },
       {
         title: "Power",
         text:
-          "Power is the rate at which work is done; it depends on how quickly the work happens.",
+          "Power is how fast the work happens.",
+        example: "Example: Running upstairs uses more power than walking.",
         sources: ["nasa_power"],
       },
       {
         title: "Energy changes form",
         text:
-          "Energy cannot be created or destroyed, but it can change from one form to another.",
+          "Energy cannot be created or destroyed, but it can change form.",
+        example: "Example: A marble’s height energy turns into motion.",
         sources: ["eia_energy"],
       },
     ],
@@ -619,19 +636,22 @@ export const LESSONS = [
       {
         title: "Six classic simple machines",
         text:
-          "The six common simple machines are the lever, wheel and axle, pulley, inclined plane, wedge, and screw.",
+          "The six simple machines are lever, wheel and axle, pulley, inclined plane, wedge, and screw.",
+        example: "Example: Scissors (lever) and a ramp (inclined plane).",
         sources: ["te_simple"],
       },
       {
         title: "Make work easier",
         text:
-          "Simple machines are basic devices with few or no moving parts that make work easier by changing the magnitude or direction of a force.",
+          "Simple machines make work feel easier by changing force size or direction.",
+        example: "Example: A ramp lets you push a heavy box up slowly.",
         sources: ["te_simple"],
       },
       {
         title: "Mechanical advantage",
         text:
-          "Mechanical advantage compares output force to input force, and friction can reduce the actual advantage.",
+          "Mechanical advantage compares output force to input force. Friction can reduce it.",
+        example: "Example: A longer wrench makes it easier to turn a bolt.",
         sources: ["brit_mech_adv"],
       },
     ],
@@ -708,13 +728,15 @@ export const LESSONS = [
       {
         title: "Levers and fulcrums",
         text:
-          "A lever is a long beam resting on a fulcrum that helps lift a load.",
+          "A lever is a beam that pivots on a fulcrum to lift a load.",
+        example: "Example: A seesaw is a lever with a fulcrum in the middle.",
         sources: ["te_simple"],
       },
       {
         title: "Torque definition",
         text:
-          "Torque is the product of a force and the perpendicular distance from the pivot point.",
+          "Torque is turning force; it depends on force and distance from the pivot.",
+        example: "Example: Pushing a door at the handle makes it swing easily.",
         sources: ["nasa_torque"],
       },
     ],
@@ -777,19 +799,22 @@ export const LESSONS = [
       {
         title: "Pulley basics",
         text:
-          "A pulley is a grooved wheel with a rope or cable used to lift or move loads.",
+          "A pulley is a grooved wheel with a rope used to lift or move loads.",
+        example: "Example: A flagpole uses a pulley to raise a flag.",
         sources: ["te_simple"],
       },
       {
         title: "More pulleys, less force",
         text:
           "Using more pulleys can reduce the input force needed to lift a load.",
+        example: "Example: A block-and-tackle lifts a heavy bucket more easily.",
         sources: ["te_pulleys"],
       },
       {
         title: "Counting rope segments",
         text:
-          "The mechanical advantage of a pulley system equals the number of rope segments supporting the load.",
+          "Mechanical advantage equals the number of rope segments supporting the load.",
+        example: "Example: Two supporting rope segments gives about 2× advantage.",
         sources: ["te_pulleys"],
       },
     ],
@@ -854,13 +879,15 @@ export const LESSONS = [
       {
         title: "Wheel and axle",
         text:
-          "A wheel and axle can multiply force; the mechanical advantage depends on the ratio of wheel radius to axle radius.",
+          "A wheel and axle can multiply force. The ratio of wheel size to axle size matters.",
+        example: "Example: A doorknob (wheel) turns a small axle inside.",
         sources: ["brit_wheel_axle"],
       },
       {
         title: "Gears transmit motion",
         text:
-          "Gears are toothed wheels that transmit and modify rotary motion and torque.",
+          "Gears are toothed wheels that pass along and change turning motion.",
+        example: "Example: Bike gears change how hard you pedal.",
         sources: ["brit_gear"],
       },
     ],
@@ -927,19 +954,22 @@ export const LESSONS = [
       {
         title: "Inclined plane",
         text:
-          "An inclined plane is a flat, sloped surface used to raise heavy objects.",
+          "An inclined plane is a sloped surface used to raise heavy objects.",
+        example: "Example: A loading ramp into a truck.",
         sources: ["te_simple"],
       },
       {
         title: "Wedge",
         text:
-          "A wedge is a tool that tapers to a thin edge and forces materials apart.",
+          "A wedge is a tool with a thin edge that pushes materials apart.",
+        example: "Example: A knife or a doorstop.",
         sources: ["te_simple"],
       },
       {
         title: "Screw",
         text:
           "A screw is an inclined plane wrapped around a cylinder.",
+        example: "Example: A jar lid or a wood screw.",
         sources: ["te_simple"],
       },
     ],
@@ -1011,25 +1041,30 @@ export const LESSONS = [
       {
         title: "Friction resists motion",
         text:
-          "Friction is the resistance that occurs when two surfaces slide or try to slide against each other.",
+          "Friction is the resistance when two surfaces slide or try to slide.",
+        example: "Example: A rug slows down a sliding book.",
         sources: ["brit_friction"],
       },
       {
         title: "Static vs kinetic",
         text:
-          "Static friction acts before motion starts, and kinetic friction acts during sliding.",
+          "Static friction acts before motion starts; kinetic friction acts during sliding.",
+        example:
+          "Example: Pushing a heavy box is hardest before it starts moving.",
         sources: ["brit_friction"],
       },
       {
         title: "Elasticity",
         text:
-          "Elasticity is the ability of a material to return to its original shape after forces are removed.",
+          "Elasticity is how well a material returns to its shape after bending or stretching.",
+        example: "Example: A rubber band stretches and snaps back.",
         sources: ["brit_elasticity"],
       },
       {
         title: "Stiffness and strength",
         text:
-          "Stiffness is resistance to elastic deformation; strength describes the load that causes permanent deformation or breakage.",
+          "Stiffness is how hard it is to bend. Strength is how much load it can take before bending or breaking.",
+        example: "Example: A metal ruler bends less than a plastic one.",
         sources: ["cam_stiffness"],
       },
     ],
@@ -1088,6 +1123,295 @@ export const LESSONS = [
       },
     ],
   },
+  {
+    id: "power-and-work-strategy",
+    level: 4,
+    title: "Work & Power Strategy",
+    kicker: "Power + Pace",
+    summary:
+      "Work measures energy transferred, and power tells how fast that work is done.",
+    concepts: [
+      {
+        title: "Work transfers energy",
+        text:
+          "Work happens when a force moves an object through a distance.",
+        example: "Example: Carrying a box up stairs transfers energy.",
+        sources: ["nasa_work"],
+      },
+      {
+        title: "Power is a rate",
+        text:
+          "Power is how fast work is done.",
+        example: "Example: Lifting the same box faster means more power.",
+        sources: ["nasa_power"],
+      },
+      {
+        title: "Faster work means more power",
+        text:
+          "Doing the same work in less time means more power.",
+        example: "Example: Running upstairs uses more power than walking.",
+        sources: ["nasa_power"],
+      },
+    ],
+    tryIt: [
+      "Move the same stack of books from the floor to a table.",
+      "Time one slow lift and one fast lift.",
+      "Same work, different time. Which has more power?",
+    ],
+    quiz: [
+      {
+        question: "Work is done when a force:",
+        choices: ["Moves an object through a distance", "Changes color", "Makes a sound"],
+        answerIndex: 0,
+        explanation: "Work is done when a force moves an object through a distance.",
+        sources: ["nasa_work"],
+      },
+      {
+        question: "Power is the:",
+        choices: ["Rate at which work is done", "Amount of mass", "Shape of an object"],
+        answerIndex: 0,
+        explanation: "Power is the rate at which work is done.",
+        sources: ["nasa_power"],
+      },
+      {
+        question: "Two students do the same work. One finishes faster. Who has more power?",
+        choices: ["The faster student", "The slower student", "Both the same"],
+        answerIndex: 0,
+        explanation: "Doing the same work in less time means greater power.",
+        sources: ["nasa_power"],
+      },
+      {
+        question: "If you push a wall and it does not move, is work done on the wall?",
+        choices: ["No", "Yes", "Only if it is heavy"],
+        answerIndex: 0,
+        explanation: "Work requires motion through a distance.",
+        sources: ["nasa_work"],
+      },
+      {
+        question: "If the same work is done in half the time, power:",
+        choices: ["Increases", "Decreases", "Stays the same"],
+        answerIndex: 0,
+        explanation: "Power increases when the same work is done in less time.",
+        sources: ["nasa_power"],
+      },
+    ],
+  },
+  {
+    id: "energy-rules",
+    level: 4,
+    title: "Energy Rules",
+    kicker: "Conservation",
+    summary:
+      "Energy cannot be created or destroyed; it changes form as work is done.",
+    concepts: [
+      {
+        title: "Energy is conserved",
+        text:
+          "Energy cannot be created or destroyed.",
+        example: "Example: A swinging pendulum trades height and motion.",
+        sources: ["eia_energy"],
+      },
+      {
+        title: "Energy changes form",
+        text:
+          "Energy can change from one form to another.",
+        example: "Example: A battery’s energy becomes light in a flashlight.",
+        sources: ["eia_energy"],
+      },
+      {
+        title: "Work moves energy",
+        text:
+          "Work transfers energy when a force moves an object through a distance.",
+        example: "Example: Pushing a toy car transfers energy to it.",
+        sources: ["nasa_work"],
+      },
+    ],
+    tryIt: [
+      "Pick a moving toy and describe how energy changes as it moves.",
+      "Find two actions that show energy changing form.",
+    ],
+    quiz: [
+      {
+        question: "The law of energy says energy can be:",
+        choices: ["Changed from one form to another", "Created from nothing", "Destroyed"],
+        answerIndex: 0,
+        explanation: "Energy changes form but is not created or destroyed.",
+        sources: ["eia_energy"],
+      },
+      {
+        question: "Energy can be created or destroyed:",
+        choices: ["No", "Yes", "Only in space"],
+        answerIndex: 0,
+        explanation: "Energy cannot be created or destroyed.",
+        sources: ["eia_energy"],
+      },
+      {
+        question: "Work transfers energy when a force:",
+        choices: ["Moves an object through a distance", "Only heats it", "Only changes color"],
+        answerIndex: 0,
+        explanation: "Work is done when a force moves an object through a distance.",
+        sources: ["nasa_work"],
+      },
+      {
+        question: "If energy cannot be created or destroyed, it must:",
+        choices: ["Change form", "Disappear", "Stay a secret"],
+        answerIndex: 0,
+        explanation: "Energy changes form as systems change.",
+        sources: ["eia_energy"],
+      },
+      {
+        question: "Power is the rate at which:",
+        choices: ["Work is done", "Mass changes", "Color changes"],
+        answerIndex: 0,
+        explanation: "Power is the rate at which work is done.",
+        sources: ["nasa_power"],
+      },
+    ],
+  },
+  {
+    id: "mechanical-advantage-mastery",
+    level: 5,
+    title: "Mechanical Advantage Mastery",
+    kicker: "Force Multipliers",
+    summary:
+      "Mechanical advantage compares output to input force, and pulley systems can increase it.",
+    concepts: [
+      {
+        title: "Mechanical advantage definition",
+        text:
+          "Mechanical advantage compares output force to input force.",
+        example: "Example: A pry bar lets a small push lift a big load.",
+        sources: ["brit_mech_adv"],
+      },
+      {
+        title: "Rope segments matter",
+        text:
+          "Mechanical advantage equals the number of rope segments supporting the load.",
+        example: "Example: Two supporting ropes gives about 2× advantage.",
+        sources: ["te_pulleys"],
+      },
+      {
+        title: "More pulleys, less input force",
+        text:
+          "Using more pulleys can reduce the input force needed to lift a load.",
+        example: "Example: Adding pulleys makes lifting a bucket easier.",
+        sources: ["te_pulleys"],
+      },
+    ],
+    tryIt: [
+      "Count the rope segments in a pulley system.",
+      "Predict the mechanical advantage, then test it by lifting the load.",
+    ],
+    quiz: [
+      {
+        question: "Mechanical advantage compares:",
+        choices: ["Output force to input force", "Input mass to output mass", "Speed to color"],
+        answerIndex: 0,
+        explanation: "Mechanical advantage is the comparison of output to input force.",
+        sources: ["brit_mech_adv"],
+      },
+      {
+        question: "If 4 rope segments support a pulley load, mechanical advantage is:",
+        choices: ["4", "2", "8"],
+        answerIndex: 0,
+        explanation: "Mechanical advantage equals the number of rope segments supporting the load.",
+        sources: ["te_pulleys"],
+      },
+      {
+        question: "Using more pulleys usually:",
+        choices: ["Reduces input force", "Increases input force", "Changes the mass"],
+        answerIndex: 0,
+        explanation: "More pulleys can reduce the input force needed to lift a load.",
+        sources: ["te_pulleys"],
+      },
+      {
+        question: "A pulley is a:",
+        choices: ["Grooved wheel with a rope", "Battery", "Sensor"],
+        answerIndex: 0,
+        explanation: "A pulley is a grooved wheel with a rope or cable.",
+        sources: ["te_simple"],
+      },
+      {
+        question: "If 2 rope segments support the load, mechanical advantage is:",
+        choices: ["2", "4", "1"],
+        answerIndex: 0,
+        explanation: "Mechanical advantage equals the number of rope segments supporting the load.",
+        sources: ["te_pulleys"],
+      },
+    ],
+  },
+  {
+    id: "torque-powertrains",
+    level: 5,
+    title: "Torque & Power Trains",
+    kicker: "Twist & Transfer",
+    summary:
+      "Torque is a turning effect, and gears and wheels transmit it through machines.",
+    concepts: [
+      {
+        title: "Torque basics",
+        text:
+          "Torque is turning force; it depends on force and distance from the pivot.",
+        example: "Example: A longer wrench makes a bolt easier to turn.",
+        sources: ["nasa_torque"],
+      },
+      {
+        title: "Gears transmit torque",
+        text:
+          "Gears are toothed wheels that pass along and change turning force.",
+        example: "Example: Bike gears send pedal force to the wheel.",
+        sources: ["brit_gear"],
+      },
+      {
+        title: "Wheel and axle ratio",
+        text:
+          "Wheel-and-axle advantage depends on the ratio of wheel size to axle size.",
+        example: "Example: A big steering wheel turns a small axle.",
+        sources: ["brit_wheel_axle"],
+      },
+    ],
+    tryIt: [
+      "Push a door near the hinge and then at the handle.",
+      "Feel how distance from the pivot changes the turning effect.",
+    ],
+    quiz: [
+      {
+        question: "Torque depends on:",
+        choices: ["Force and distance from the pivot", "Color and size", "Mass and temperature"],
+        answerIndex: 0,
+        explanation: "Torque depends on force and distance from the pivot.",
+        sources: ["nasa_torque"],
+      },
+      {
+        question: "Gears are best described as:",
+        choices: ["Toothed wheels that transmit rotary motion and torque", "Springs", "Magnets"],
+        answerIndex: 0,
+        explanation: "Gears transmit and modify rotary motion and torque.",
+        sources: ["brit_gear"],
+      },
+      {
+        question: "Wheel-and-axle mechanical advantage depends on:",
+        choices: ["Wheel radius compared to axle radius", "Color of the wheel", "Temperature"],
+        answerIndex: 0,
+        explanation: "Mechanical advantage depends on the ratio of wheel radius to axle radius.",
+        sources: ["brit_wheel_axle"],
+      },
+      {
+        question: "With the same force, increasing distance from the pivot:",
+        choices: ["Increases torque", "Decreases torque", "Removes torque"],
+        answerIndex: 0,
+        explanation: "Torque depends on force and distance from the pivot.",
+        sources: ["nasa_torque"],
+      },
+      {
+        question: "A gear is a:",
+        choices: ["Toothed wheel", "Rope", "Flat plate"],
+        answerIndex: 0,
+        explanation: "Gears are toothed wheels.",
+        sources: ["brit_gear"],
+      },
+    ],
+  },
 ];
 
 export const LEVELS = [
@@ -1106,6 +1430,16 @@ export const LEVELS = [
     title: "Level 3: Motion Makers",
     goal: "Explore rotation, friction, and materials.",
   },
+  {
+    level: 4,
+    title: "Level 4: Power & Energy",
+    goal: "Analyze work, power, and energy changes.",
+  },
+  {
+    level: 5,
+    title: "Level 5: Systems & Advantage",
+    goal: "Master torque, gears, and mechanical advantage.",
+  },
 ];
 
 export const LIBRARY = {
@@ -1116,6 +1450,7 @@ export const LIBRARY = {
       level: "Level 2: Structures",
       time: "45-60 min",
       difficulty: "Medium",
+      unlockLevel: 2,
       mission: "Build the lightest bridge that holds the most weight.",
       goal:
         "Design a straw truss bridge that spans 20 cm and holds the heaviest load.",
@@ -1158,6 +1493,7 @@ export const LIBRARY = {
       level: "Level 2-3: Energy & Motion",
       time: "60-90 min",
       difficulty: "Medium",
+      unlockLevel: 2,
       mission: "Build a track where the marble never falls off.",
       goal:
         "Create a marble coaster that keeps the marble on track and reaches a cup at the end.",
@@ -1199,6 +1535,7 @@ export const LIBRARY = {
       level: "Level 2: Simple Machines",
       time: "35-45 min",
       difficulty: "Easy",
+      unlockLevel: 2,
       mission: "Find the pulley setup that needs the least force.",
       goal:
         "Compare the force needed to lift a load using fixed and movable pulleys.",
@@ -1234,9 +1571,10 @@ export const LIBRARY = {
     {
       id: "rubber-band-car",
       title: "Rubber Band Car Sprint",
-      level: "Level 3: Energy Storage",
+      level: "Level 4: Energy Storage",
       time: "45-60 min",
       difficulty: "Medium",
+      unlockLevel: 4,
       mission: "Build a car that goes the farthest.",
       goal:
         "Store energy in a twisted rubber band and use it to drive a small car.",
@@ -1278,6 +1616,7 @@ export const LIBRARY = {
       level: "Level 1-2: Forces",
       time: "25-40 min",
       difficulty: "Easy",
+      unlockLevel: 1,
       mission: "Race single-stage vs two-stage rockets.",
       goal:
         "Use air thrust to move a balloon rocket along a string.",
@@ -1320,6 +1659,7 @@ export const LIBRARY = {
       level: "Level 1",
       blurb: "Master Newton's laws with quick-fire challenges.",
       accent: "sunrise",
+      unlockLevel: 1,
       questions: [
         {
           q: "If the net external force is zero, what happens to motion?",
@@ -1376,6 +1716,7 @@ export const LIBRARY = {
       level: "Level 2",
       blurb: "Track how energy changes form as things move.",
       accent: "mint",
+      unlockLevel: 2,
       questions: [
         {
           q: "When is work done?",
@@ -1426,6 +1767,7 @@ export const LIBRARY = {
       level: "Level 3",
       blurb: "Gear ratios, torque, friction, and smart material choices.",
       accent: "sky",
+      unlockLevel: 3,
       questions: [
         {
           q: "What are the six simple machines?",
@@ -1474,6 +1816,96 @@ export const LIBRARY = {
           hint: "Two parts rotating together.",
           a: "A large wheel attached to a smaller axle to trade force and distance.",
           sources: ["brit_wheel_axle"],
+        },
+      ],
+    },
+    {
+      title: "Power & Energy Deck",
+      level: "Level 4",
+      blurb: "Work, power, and energy — with real-world timing challenges.",
+      accent: "sunrise",
+      unlockLevel: 4,
+      questions: [
+        {
+          q: "Work is done when a force:",
+          hint: "Force plus distance.",
+          a: "Moves an object through a distance.",
+          sources: ["nasa_work"],
+        },
+        {
+          q: "Power is the rate at which:",
+          hint: "Think time.",
+          a: "Work is done.",
+          sources: ["nasa_power"],
+        },
+        {
+          q: "Same work, less time means:",
+          hint: "Speed of doing work.",
+          a: "More power.",
+          sources: ["nasa_power"],
+        },
+        {
+          q: "Energy can be created or destroyed:",
+          hint: "Law of conservation.",
+          a: "No, it only changes form.",
+          sources: ["eia_energy"],
+        },
+        {
+          q: "If a force acts but nothing moves, work is:",
+          hint: "Distance matters.",
+          a: "Zero, because no distance.",
+          sources: ["nasa_work"],
+        },
+        {
+          q: "Energy can change:",
+          hint: "Forms.",
+          a: "From one form to another.",
+          sources: ["eia_energy"],
+        },
+      ],
+    },
+    {
+      title: "Torque & Advantage Deck",
+      level: "Level 5",
+      blurb: "Advanced machines: torque, gears, and mechanical advantage.",
+      accent: "sky",
+      unlockLevel: 5,
+      questions: [
+        {
+          q: "Torque depends on:",
+          hint: "Force and distance.",
+          a: "Force and distance from the pivot.",
+          sources: ["nasa_torque"],
+        },
+        {
+          q: "Mechanical advantage compares:",
+          hint: "Output vs input.",
+          a: "Output force to input force.",
+          sources: ["brit_mech_adv"],
+        },
+        {
+          q: "A gear is a:",
+          hint: "Toothed wheel.",
+          a: "Toothed wheel that transmits rotary motion and torque.",
+          sources: ["brit_gear"],
+        },
+        {
+          q: "Wheel-and-axle mechanical advantage depends on:",
+          hint: "Radius ratio.",
+          a: "Wheel radius compared to axle radius.",
+          sources: ["brit_wheel_axle"],
+        },
+        {
+          q: "More rope segments in a pulley system usually means:",
+          hint: "Input force.",
+          a: "Less input force needed.",
+          sources: ["te_pulleys"],
+        },
+        {
+          q: "If you apply the same force farther from a pivot, torque:",
+          hint: "Distance matters.",
+          a: "Increases.",
+          sources: ["nasa_torque"],
         },
       ],
     },
@@ -1607,7 +2039,7 @@ export const BEYOND = {
   hero: {
     title: "Beyond the Workshop",
     subtitle: "A quest map of real-world engineering feats and missions.",
-    blurb: "Complete all Level 1-3 lessons to unlock every quest.",
+    blurb: "Complete all Level 1-5 lessons to unlock every quest.",
     sources: ["brit_mech_eng"],
     media: "windTurbine",
   },

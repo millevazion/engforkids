@@ -240,6 +240,12 @@ export default function LibraryPage() {
     return stat ? stat.completedCount === stat.total : false;
   };
 
+  const completedLevelCount = levelStats.filter(
+    (level) => level.completedCount === level.total
+  ).length;
+  const unlockedLevel = Math.min(completedLevelCount + 1, LEVELS.length);
+  const isUnlockedFor = (levelNumber) => unlockedLevel >= levelNumber;
+
   const unlocks = {
     build: true,
     practice: levelComplete(1),
@@ -268,8 +274,8 @@ export default function LibraryPage() {
               Build, play, and level up your engineering skills.
             </h1>
             <p className="mt-3 text-lg text-ink-soft">
-              The library is split into four shelves. Each shelf unlocks as Antoine
-              completes the core lessons. Sources live on the Sources page.
+              The library is split into four shelves. Each shelf unlocks as learners
+              complete the core levels. Sources live on the Sources page.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               <Link
@@ -284,6 +290,7 @@ export default function LibraryPage() {
             <div className="text-sm font-semibold text-ink">Unlock Tracker</div>
             <p className="mt-2 text-sm text-ink-soft">
               Finish Level 1 to unlock Practice Decks, Level 2 for Blueprints, Level 3 for Engineer Notes.
+              Level 4 and 5 unlock advanced practice decks.
             </p>
             <div className="mt-4 grid gap-2">
               {levelStats.map((level) => (
@@ -327,6 +334,8 @@ export default function LibraryPage() {
         <section className="mt-8 grid gap-6">
           {LIBRARY.buildCards.map((card) => {
             const isOpen = openBuildId === card.id;
+            const requiredLevel = card.unlockLevel ?? 1;
+            const isUnlocked = isUnlockedFor(requiredLevel);
             return (
               <article key={card.id} className="rounded-3xl bg-white p-6 shadow-card">
                 <div className="grid gap-6 lg:grid-cols-[260px_1fr]">
@@ -334,7 +343,9 @@ export default function LibraryPage() {
                     <img
                       src={MEDIA[card.media]?.src}
                       alt={MEDIA[card.media]?.alt}
-                      className="h-52 w-full rounded-2xl object-cover"
+                      className={`h-52 w-full rounded-2xl object-cover ${
+                        isUnlocked ? "" : "opacity-60"
+                      }`}
                       loading="lazy"
                     />
                     <div className="mt-2 text-xs text-ink-soft">
@@ -360,7 +371,12 @@ export default function LibraryPage() {
                       <button
                         type="button"
                         onClick={() => setOpenBuildId(isOpen ? null : card.id)}
-                        className="rounded-full bg-sunrise px-4 py-2 text-sm font-semibold text-white"
+                        disabled={!isUnlocked}
+                        className={`rounded-full px-4 py-2 text-sm font-semibold ${
+                          isUnlocked
+                            ? "bg-sunrise text-white"
+                            : "bg-sand-2 text-ink-soft"
+                        }`}
                       >
                         {isOpen ? "Hide Build Plan" : "Open Build Plan"}
                       </button>
@@ -373,10 +389,15 @@ export default function LibraryPage() {
                         Open guide
                       </a>
                     </div>
+                    {!isUnlocked && (
+                      <div className="mt-3 rounded-2xl border border-sand-2 bg-sand/50 p-3 text-sm text-ink-soft">
+                        Locked until Level {requiredLevel} is complete.
+                      </div>
+                    )}
                   </div>
                 </div>
 
-                {isOpen && (
+                {isOpen && isUnlocked && (
                   <div className="mt-6 grid gap-4 lg:grid-cols-[1fr_1fr]">
                     <div className="rounded-2xl border border-sand-2 bg-sand/40 p-4">
                       <div className="text-sm font-semibold">Materials</div>
@@ -421,9 +442,26 @@ export default function LibraryPage() {
       {tab === "practice" && (
         <section className="mt-8 grid gap-6">
           {unlocks.practice ? (
-            LIBRARY.practiceDecks.map((deck) => (
-              <PracticeDeck key={deck.title} deck={deck} />
-            ))
+            LIBRARY.practiceDecks.map((deck) => {
+              const requiredLevel = deck.unlockLevel ?? 1;
+              const isDeckUnlocked = isUnlockedFor(requiredLevel);
+              return isDeckUnlocked ? (
+                <PracticeDeck key={deck.title} deck={deck} />
+              ) : (
+                <article
+                  key={deck.title}
+                  className="rounded-3xl border border-sand-2 bg-sand/50 p-6 text-center"
+                >
+                  <div className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-semibold text-ink-soft">
+                    <Lock className="h-4 w-4" /> Level {requiredLevel} Locked
+                  </div>
+                  <h3 className="mt-3 text-xl font-semibold">{deck.title}</h3>
+                  <p className="mt-2 text-sm text-ink-soft">
+                    Finish Level {requiredLevel} to unlock this deck.
+                  </p>
+                </article>
+              );
+            })
           ) : (
             <div className="rounded-3xl border border-sand-2 bg-sand/50 p-6 text-center">
               <h3 className="text-xl font-semibold">Practice Decks Locked</h3>

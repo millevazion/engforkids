@@ -77,6 +77,25 @@ function SourceRefs({ sources, index }) {
   );
 }
 
+function EngineerAvatar({ stage }) {
+  return (
+    <svg viewBox="0 0 160 180" className="h-20 w-20">
+      <circle cx="80" cy="80" r="70" fill={stage.glow} />
+      <rect x="42" y="92" width="76" height="62" rx="22" fill={stage.suit} />
+      <rect x="54" y="104" width="52" height="32" rx="14" fill={stage.shirt} />
+      <circle cx="80" cy="66" r="26" fill={stage.skin} />
+      <rect x="48" y="36" width="64" height="24" rx="12" fill={stage.helmet} />
+      <rect x="42" y="52" width="76" height="12" rx="6" fill={stage.helmetTrim} />
+      <rect x="56" y="62" width="48" height="18" rx="9" fill={stage.goggles} />
+      <circle cx="68" cy="70" r="4" fill="#111827" />
+      <circle cx="92" cy="70" r="4" fill="#111827" />
+      <rect x="70" y="126" width="20" height="18" rx="6" fill={stage.badge} />
+      <rect x="124" y="108" width="10" height="40" rx="5" fill={stage.tool} />
+      <circle cx="129" cy="104" r="8" fill="none" stroke={stage.tool} strokeWidth="4" />
+    </svg>
+  );
+}
+
 export default function Home() {
   const [activeLessonId, setActiveLessonId] = useState(LESSONS[0].id);
   const [progress, setProgress] = useStoredState(STORAGE_KEY, DEFAULT_PROGRESS);
@@ -114,14 +133,19 @@ export default function Home() {
   );
 
   const quizScore = progress.quiz?.[lesson.id] || null;
+  const selectedAnswers = answers[lesson.id] || [];
+  const quizCheckedForLesson = quizChecked[lesson.id];
+  const scorePercent = quizScore
+    ? Math.round((quizScore.score / quizScore.total) * 100)
+    : 0;
   const quizCount = Object.keys(progress.quiz || {}).length;
   const xp = stats.completed * 50 + quizCount * 20;
   const rank =
-    xp >= 450
+    xp >= 800
       ? "Master Builder"
-      : xp >= 250
+      : xp >= 550
       ? "Gear Hero"
-      : xp >= 120
+      : xp >= 300
       ? "Curious Apprentice"
       : "Rookie Engineer";
 
@@ -147,7 +171,107 @@ export default function Home() {
       unlocked: levelStats[2]?.completedCount === levelStats[2]?.total,
       color: "bg-sky",
     },
+    {
+      id: "power",
+      title: "Power Pilot",
+      detail: "Finish Level 4",
+      unlocked: levelStats[3]?.completedCount === levelStats[3]?.total,
+      color: "bg-sunrise",
+    },
+    {
+      id: "systems",
+      title: "System Architect",
+      detail: "Finish Level 5",
+      unlocked: levelStats[4]?.completedCount === levelStats[4]?.total,
+      color: "bg-sun",
+    },
   ];
+
+  const completedLevels = levelStats.filter(
+    (level) => level.completedCount === level.total
+  ).length;
+  const badgeCount = badges.filter((badge) => badge.unlocked).length;
+  const avatarStages = [
+    {
+      name: "Rookie Engineer",
+      blurb: "Learning the basics.",
+      helmet: "#ffd166",
+      helmetTrim: "#f59e0b",
+      goggles: "#111827",
+      suit: "#ff6b35",
+      shirt: "#ffe8c7",
+      badge: "#f59e0b",
+      skin: "#f8d7c0",
+      tool: "#111827",
+      glow: "#fff3d4",
+    },
+    {
+      name: "Field Builder",
+      blurb: "Ready for hands-on builds.",
+      helmet: "#5b7cfa",
+      helmetTrim: "#1d4ed8",
+      goggles: "#111827",
+      suit: "#ff6b35",
+      shirt: "#ffd166",
+      badge: "#2ec4b6",
+      skin: "#f8d7c0",
+      tool: "#1d4ed8",
+      glow: "#e6ecff",
+    },
+    {
+      name: "Machine Tinkerer",
+      blurb: "Simple machines unlocked.",
+      helmet: "#2ec4b6",
+      helmetTrim: "#0f766e",
+      goggles: "#f8fafc",
+      suit: "#111827",
+      shirt: "#ffd166",
+      badge: "#ff6b35",
+      skin: "#f8d7c0",
+      tool: "#0f766e",
+      glow: "#dff7f4",
+    },
+    {
+      name: "Motion Architect",
+      blurb: "Movement systems engaged.",
+      helmet: "#111827",
+      helmetTrim: "#334155",
+      goggles: "#f8fafc",
+      suit: "#5b7cfa",
+      shirt: "#ffd166",
+      badge: "#2ec4b6",
+      skin: "#f8d7c0",
+      tool: "#334155",
+      glow: "#e6ecff",
+    },
+    {
+      name: "Power Strategist",
+      blurb: "Energy and power mastered.",
+      helmet: "#ff6b35",
+      helmetTrim: "#b45309",
+      goggles: "#f8fafc",
+      suit: "#1f2937",
+      shirt: "#5b7cfa",
+      badge: "#ffd166",
+      skin: "#f8d7c0",
+      tool: "#b45309",
+      glow: "#ffe7d7",
+    },
+    {
+      name: "System Architect",
+      blurb: "Complex systems unlocked.",
+      helmet: "#2ec4b6",
+      helmetTrim: "#0f766e",
+      goggles: "#f8fafc",
+      suit: "#0f172a",
+      shirt: "#ff6b35",
+      badge: "#5b7cfa",
+      skin: "#f8d7c0",
+      tool: "#0f766e",
+      glow: "#dff7f4",
+    },
+  ];
+  const avatarStage = avatarStages[Math.min(completedLevels, avatarStages.length - 1)];
 
   const handleSelectAnswer = (questionIndex, answerIndex) => {
     setAnswers((prev) => {
@@ -196,15 +320,6 @@ export default function Home() {
     });
   };
 
-  const handleToggleComplete = () => {
-    setProgress((prev) => {
-      const next = { ...prev, completed: { ...prev.completed } };
-      if (next.completed[lesson.id]) delete next.completed[lesson.id];
-      else next.completed[lesson.id] = true;
-      return next;
-    });
-  };
-
   const handleResetProgress = () => {
     setProgress(DEFAULT_PROGRESS);
     setAnswers({});
@@ -225,7 +340,7 @@ export default function Home() {
               <Rocket className="h-4 w-4" /> Engineering Quest
             </div>
             <h1 className="mt-4 font-title text-3xl font-semibold sm:text-4xl">
-              Build, Test, Improve — a mechanical engineering journey for Antoine.
+              Build, Test, Improve — a mechanical engineering journey for curious kids.
             </h1>
             <p className="mt-3 text-base leading-relaxed text-ink-soft">
               Short lessons, hands-on challenges, and quizzes. Every fact is tied to a real source.
@@ -271,6 +386,18 @@ export default function Home() {
                 <span className="text-ink-soft">{rank}</span>
               </div>
             </div>
+            <div className="mt-4 flex items-center gap-4 rounded-xl bg-sand/60 p-3">
+              <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white">
+                <EngineerAvatar stage={avatarStage} />
+              </div>
+              <div>
+                <div className="text-sm font-semibold">{avatarStage.name}</div>
+                <div className="text-xs text-ink-soft">{avatarStage.blurb}</div>
+                <div className="mt-2 text-xs font-semibold text-ink-soft">
+                  Badges earned: {badgeCount}/{badges.length}
+                </div>
+              </div>
+            </div>
             <button
               onClick={handleResetProgress}
               className="mt-4 inline-flex items-center gap-2 rounded-lg border border-sand-2 px-3 py-2 text-sm font-semibold text-ink-soft hover:border-sunrise hover:text-ink"
@@ -284,17 +411,19 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mt-6 grid gap-4 md:grid-cols-3">
+      <section className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
         {levelStats.map((level) => (
           <div key={level.level} className="rounded-2xl bg-white p-4 shadow-card">
-            <div className="flex items-center justify-between">
+            <div className="flex items-start justify-between gap-3">
               <div>
                 <div className="text-xs font-semibold uppercase tracking-[0.2em] text-ink-soft">
                   {level.title}
                 </div>
                 <div className="text-xs text-ink-soft">{level.goal}</div>
               </div>
-              <MapPinned className="h-5 w-5 text-sunrise" />
+              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-sand-2">
+                <MapPinned className="h-4 w-4 text-sunrise" />
+              </span>
             </div>
             <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-sand-2">
               <div
@@ -313,7 +442,7 @@ export default function Home() {
         <div className="flex items-center gap-2 text-sm font-semibold text-ink-soft">
           <Trophy className="h-4 w-4 text-sunrise" /> Badge Shelf
         </div>
-        <div className="mt-4 grid gap-3 sm:grid-cols-3">
+        <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
           {badges.map((badge) => (
             <div
               key={badge.id}
@@ -403,17 +532,18 @@ export default function Home() {
             </h2>
             <p className="mt-2 text-base text-ink-soft">{lesson.summary}</p>
             <div className="mt-4 flex flex-wrap items-center gap-3">
-              <button
-                onClick={handleToggleComplete}
-                className={`inline-flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-white ${
+              <span
+                className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold ${
                   progress.completed?.[lesson.id]
-                    ? "bg-emerald-500"
-                    : "bg-sunrise"
+                    ? "bg-emerald-100 text-emerald-700"
+                    : "bg-sand-2 text-ink-soft"
                 }`}
               >
                 <CheckCircle2 className="h-4 w-4" />
-                {progress.completed?.[lesson.id] ? "Completed!" : "Mark complete"}
-              </button>
+                {progress.completed?.[lesson.id]
+                  ? "Lesson complete"
+                  : "Complete the quiz (80%+)"}
+              </span>
               <span className="inline-flex items-center gap-2 rounded-full bg-sand-2 px-3 py-1 text-xs font-semibold text-ink-soft">
                 <Wrench className="h-4 w-4" /> Level {lesson.level}
               </span>
@@ -432,6 +562,11 @@ export default function Home() {
                   <p className="mt-2 text-sm text-ink-soft">
                     {concept.text} <SourceRefs sources={concept.sources} index={sourceIndex} />
                   </p>
+                  {concept.example && (
+                    <p className="mt-2 text-xs text-ink-soft">
+                      {concept.example}
+                    </p>
+                  )}
                 </div>
               ))}
             </div>
@@ -450,8 +585,7 @@ export default function Home() {
             <h3 className="text-lg font-semibold">Mini Quiz</h3>
             <div className="mt-4 grid gap-4">
               {lesson.quiz.map((q, qi) => {
-                const selected = answers[lesson.id] || [];
-                const checked = quizChecked[lesson.id];
+                const checked = quizCheckedForLesson;
                 return (
                   <div
                     key={q.question}
@@ -460,13 +594,14 @@ export default function Home() {
                     <div className="text-sm font-semibold">{q.question}</div>
                     <div className="mt-3 grid gap-2">
                       {q.choices.map((choice, ci) => {
-                        const isSelected = selected[qi] === ci;
+                        const isSelected = selectedAnswers[qi] === ci;
                         const isCorrect = checked && ci === q.answerIndex;
                         const isWrong = checked && isSelected && ci !== q.answerIndex;
                         return (
                           <button
                             key={choice}
                             onClick={() => handleSelectAnswer(qi, ci)}
+                            disabled={checked}
                             className={`rounded-lg border px-3 py-2 text-left text-sm transition ${
                               isCorrect
                                 ? "border-emerald-500 bg-emerald-50"
@@ -477,20 +612,55 @@ export default function Home() {
                                 : "border-white bg-white hover:border-sunrise/50"
                             }`}
                           >
-                            {choice}
+                            <span className="flex items-center justify-between gap-2">
+                              <span>{choice}</span>
+                              {checked && isSelected && (
+                                <span className="rounded-full bg-sand-2 px-2 py-0.5 text-[11px] font-semibold text-ink-soft">
+                                  Your choice
+                                </span>
+                              )}
+                              {checked && isCorrect && (
+                                <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-[11px] font-semibold text-emerald-700">
+                                  Correct
+                                </span>
+                              )}
+                            </span>
                           </button>
                         );
                       })}
                     </div>
                     {checked && (
-                      <p className="mt-3 text-xs text-ink-soft">
-                        {q.explanation} <SourceRefs sources={q.sources} index={sourceIndex} />
-                      </p>
+                      <div className="mt-3 text-xs text-ink-soft">
+                        <p>
+                          Your answer:{" "}
+                          <span className="font-semibold text-ink">
+                            {selectedAnswers[qi] === undefined
+                              ? "No answer"
+                              : q.choices[selectedAnswers[qi]]}
+                          </span>
+                        </p>
+                        <p>
+                          Correct answer:{" "}
+                          <span className="font-semibold text-ink">
+                            {q.choices[q.answerIndex]}
+                          </span>
+                        </p>
+                        <p className="mt-2">
+                          {q.explanation}{" "}
+                          <SourceRefs sources={q.sources} index={sourceIndex} />
+                        </p>
+                      </div>
                     )}
                   </div>
                 );
               })}
             </div>
+            {quizCheckedForLesson && quizScore && (
+              <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-sm">
+                You got <strong>{quizScore.score}</strong> out of{" "}
+                <strong>{quizScore.total}</strong> correct ({scorePercent}%).
+              </div>
+            )}
             <div className="mt-4 flex flex-wrap gap-3">
               <button
                 onClick={handleCheckQuiz}
@@ -567,7 +737,7 @@ export default function Home() {
             <p className="mt-2 text-sm text-ink-soft">
               {allCoreComplete
                 ? "Unlocked! Explore the quest map and advanced builds."
-                : "Complete all Level 1-3 lessons to unlock the quest map."}
+                : "Complete all Level 1-5 lessons to unlock the quest map."}
             </p>
             <Link
               href="/beyond"

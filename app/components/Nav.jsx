@@ -12,6 +12,12 @@ export default function Nav() {
       </Link>
       <div className="flex flex-wrap items-center gap-2">
         <Link
+          href="/"
+          className="rounded-full bg-sand-2 px-4 py-2 text-sm font-semibold text-ink-soft"
+        >
+          Mission Progress
+        </Link>
+        <Link
           href="/library"
           className="rounded-full bg-sand-2 px-4 py-2 text-sm font-semibold text-ink-soft"
         >
