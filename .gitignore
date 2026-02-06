@@ -1,0 +1,28 @@
+# dependencies
+node_modules/
+
+# next
+.next/
+out/
+
+# vite
+.vite/
+
+# production
+build/
+
+# misc
+.DS_Store
+*.log
+
+# env
+.env
+.env.local
+.env.*.local
+
+# editor
+.vscode/
+.idea/
+
+# test
+coverage/
