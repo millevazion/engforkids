@@ -13,11 +13,13 @@ import {
   RotateCcw,
   ShieldCheck,
   Trophy,
-  MapPinned,
   Lock,
   Unlock,
   Star,
   Compass,
+  Sparkles,
+  Zap,
+  Cpu,
 } from "lucide-react";
 
 const STORAGE_KEY = "eng-quest-progress-v2";
@@ -79,7 +81,7 @@ function SourceRefs({ sources, index }) {
 
 function EngineerAvatar({ stage }) {
   return (
-    <svg viewBox="0 0 160 180" className="h-20 w-20">
+    <svg viewBox="0 0 160 180" className="h-24 w-24">
       <circle cx="80" cy="80" r="70" fill={stage.glow} />
       <rect x="42" y="92" width="76" height="62" rx="22" fill={stage.suit} />
       <rect x="54" y="104" width="52" height="32" rx="14" fill={stage.shirt} />
@@ -92,6 +94,36 @@ function EngineerAvatar({ stage }) {
       <rect x="70" y="126" width="20" height="18" rx="6" fill={stage.badge} />
       <rect x="124" y="108" width="10" height="40" rx="5" fill={stage.tool} />
       <circle cx="129" cy="104" r="8" fill="none" stroke={stage.tool} strokeWidth="4" />
+    </svg>
+  );
+}
+
+function ProgressRing({ percent, colorClass }) {
+  const radius = 26;
+  const circumference = 2 * Math.PI * radius;
+  const offset = circumference - (percent / 100) * circumference;
+  return (
+    <svg viewBox="0 0 72 72" className="h-16 w-16">
+      <circle
+        cx="36"
+        cy="36"
+        r="26"
+        fill="none"
+        strokeWidth="8"
+        className="stroke-sand-2"
+      />
+      <circle
+        cx="36"
+        cy="36"
+        r="26"
+        fill="none"
+        strokeWidth="8"
+        strokeLinecap="round"
+        strokeDasharray={circumference}
+        strokeDashoffset={offset}
+        transform="rotate(-90 36 36)"
+        className={`${colorClass} transition-all duration-700`}
+      />
     </svg>
   );
 }
@@ -387,7 +419,7 @@ export default function Home() {
               </div>
             </div>
             <div className="mt-4 flex items-center gap-4 rounded-xl bg-sand/60 p-3">
-              <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white">
+              <div className="flex h-24 w-24 items-center justify-center rounded-2xl bg-white">
                 <EngineerAvatar stage={avatarStage} />
               </div>
               <div>
@@ -412,30 +444,79 @@ export default function Home() {
       </section>
 
       <section className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-5">
-        {levelStats.map((level) => (
-          <div key={level.level} className="rounded-2xl bg-white p-4 shadow-card">
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-ink-soft">
-                  {level.title}
+        {levelStats.map((level) => {
+          const styleMap = {
+            1: {
+              icon: Rocket,
+              color: "text-sunrise",
+              ring: "stroke-sunrise",
+              bg: "bg-sun/30",
+              tag: "bg-sunrise/10 text-sunrise",
+            },
+            2: {
+              icon: Wrench,
+              color: "text-mint",
+              ring: "stroke-mint",
+              bg: "bg-mint/15",
+              tag: "bg-mint/15 text-mint",
+            },
+            3: {
+              icon: Sparkles,
+              color: "text-sky",
+              ring: "stroke-sky",
+              bg: "bg-sky/15",
+              tag: "bg-sky/15 text-sky",
+            },
+            4: {
+              icon: Zap,
+              color: "text-sunrise",
+              ring: "stroke-sunrise",
+              bg: "bg-sunrise/10",
+              tag: "bg-sunrise/10 text-sunrise",
+            },
+            5: {
+              icon: Cpu,
+              color: "text-ink",
+              ring: "stroke-ink",
+              bg: "bg-sand-2",
+              tag: "bg-sand-2 text-ink-soft",
+            },
+          };
+
+          const style = styleMap[level.level] || styleMap[1];
+          const Icon = style.icon;
+
+          return (
+            <div
+              key={level.level}
+              className="group rounded-2xl bg-white p-4 shadow-card transition hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(15,23,42,0.15)]"
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div className="space-y-2">
+                  <span
+                    className={`inline-flex rounded-full px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] ${style.tag}`}
+                  >
+                    Level {level.level}
+                  </span>
+                  <div className="text-sm font-semibold">{level.title}</div>
+                  <div className="text-xs text-ink-soft">{level.goal}</div>
                 </div>
-                <div className="text-xs text-ink-soft">{level.goal}</div>
+                <div className="relative flex h-16 w-16 items-center justify-center">
+                  <ProgressRing percent={level.percent} colorClass={style.ring} />
+                  <div className={`absolute inset-0 flex items-center justify-center rounded-full ${style.bg} floaty`}>
+                    <Icon className={`h-6 w-6 ${style.color}`} />
+                  </div>
+                </div>
               </div>
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-sand-2">
-                <MapPinned className="h-4 w-4 text-sunrise" />
-              </span>
+              <div className="mt-4 flex items-center justify-between text-xs text-ink-soft">
+                <span>
+                  {level.completedCount} of {level.total} complete
+                </span>
+                <span className="font-semibold">{level.percent}%</span>
+              </div>
             </div>
-            <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-sand-2">
-              <div
-                className="h-full rounded-full bg-gradient-to-r from-sunrise to-sky"
-                style={{ width: `${level.percent}%` }}
-              />
-            </div>
-            <div className="mt-2 text-xs text-ink-soft">
-              {level.completedCount} of {level.total} complete
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </section>
 
       <section className="mt-6 rounded-2xl bg-white p-5 shadow-card">

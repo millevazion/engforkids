@@ -24,6 +24,20 @@ body {
   color: #151515;
 }
 
+.floaty {
+  animation: floaty 3.5s ease-in-out infinite;
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
 .flip-card {
   perspective: 1200px;
 }
